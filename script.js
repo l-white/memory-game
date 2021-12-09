@@ -80,7 +80,7 @@ function handleCardClick(event) {
   console.log(flipped);
 
   console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
-  console.log(card.style.backgroundColor);
+  //console.log(card.style.backgroundColor);
   
   /*for (let i = 0; i < flipped.length; i++){
     if (flipped[0] !== flipped[1] && flipped.length === 2){
@@ -95,6 +95,12 @@ function handleCardClick(event) {
     cardTwo = event.target;
     console.log(cardTwo);
   }
+  //console.log(cardOne.style.backgroundColor);
+  //console.log(cardTwo.style.backgroundColor);
+  //console.log(cardOne.classList[0] === cardTwo.classList[0]);
+
+
+
   //console.log(event);
   //console.log(event.target);
   
