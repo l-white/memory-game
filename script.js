@@ -67,7 +67,6 @@ function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   //let clicks = 0;
   
-  
   let card = event.target;
   console.log(card);
   let clickCount = 0;
@@ -83,12 +82,21 @@ function handleCardClick(event) {
   console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
   console.log(card.style.backgroundColor);
   
-  for (let i = 0; i < flipped.length; i++){
+  /*for (let i = 0; i < flipped.length; i++){
     if (flipped[0] !== flipped[1] && flipped.length === 2){
       event.target.style.backgroundColor = 'white';
     }
+  }*/
+  if (!cardOne || !cardTwo){
+    cardOne = event.target;
+    console.log(cardOne);
   }
-  
+  if (cardOne && !cardTwo){
+    cardTwo = event.target;
+    console.log(cardTwo);
+  }
+  //console.log(event);
+  //console.log(event.target);
   
   //cardOne = flipped[0];
   //cardTwo = flipped[1];
