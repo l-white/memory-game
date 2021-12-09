@@ -1,6 +1,8 @@
 const gameContainer = document.getElementById("game");
 let flipped = [];
 let isMatch = true;
+let cardOne = null;
+let cardTwo = null;
 
 const COLORS = [
   "red",
@@ -79,11 +81,28 @@ function handleCardClick(event) {
   console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
   console.log(card.style.backgroundColor);
   
+  
+  cardOne = flipped[0];
+  cardTwo = flipped[1];
+  console.log(cardOne, cardTwo);
+  console.log(cardOne === cardTwo);
+
+  if (cardOne !== cardTwo){
+    console.log("no match");
+  } else {
+    console.log("match");
+  }
+
+
+
+
+
+  /*
   for (let i = 0; i < flipped.length; i++){
     if (flipped[0] !== flipped[1] && flipped.length === 2) {
       card.style.backgroundColor = 'white';
     }
-  }
+  }*/
 
   //if (flipped[0] !== flipped[1] && flipped.length === 2){
     //for (let i = 0; )
