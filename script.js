@@ -128,9 +128,10 @@ function handleCardClick(event) {
       //noClicking = false;
       return event.target;
     }, 1500);
-    flipped.pop();
-    flipped.pop();
+    //flipped.pop();
+    
   }
+  console.log(flipped);
   
 
   
