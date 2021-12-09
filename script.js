@@ -66,6 +66,8 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   //let clicks = 0;
+  
+  
   let card = event.target;
   console.log(card);
   let clickCount = 0;
@@ -81,9 +83,17 @@ function handleCardClick(event) {
   console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
   console.log(card.style.backgroundColor);
   
+  for (let i = 0; i < flipped.length; i++){
+    if (flipped[0] !== flipped[1] && flipped.length === 2){
+      event.target.style.backgroundColor = 'white';
+    }
+  }
   
-  cardOne = flipped[0];
-  cardTwo = flipped[1];
+  
+  //cardOne = flipped[0];
+  //cardTwo = flipped[1];
+  /*cardOne = event.target;
+  cardTwo = event.target;
   console.log(cardOne, cardTwo);
   console.log(cardOne === cardTwo);
 
@@ -93,6 +103,44 @@ function handleCardClick(event) {
     console.log("match");
   }
 
+  if (cardOne || cardTwo && cardOne !== cardTwo){
+    setTimeout(function background(){
+      card.style.background = "white";
+    });
+  }*/
+
+  
+//With every click you will go through a conditional check that I will pseudo code here for you:
+
+//- Are there any values for cardOne and cardTwo?
+//If not:
+//- Set the current target to cardOne and return.
+/*
+if (!cardOne || !cardTwo) {
+  cardOne = event.target;
+  console.log(`CardOne: ${cardOne}`);
+  console.log(event.target);
+  return cardOne;
+}
+
+if (cardOne !== null && cardTwo === null){
+  cardTwo = event.target;
+  console.log(`CardTwo: ${cardTwo}`);
+  console.log(event.target);
+  return cardTwo;
+}*/
+
+//console.log(cardOne);
+
+//console.log(cardOne, cardTwo);
+//If only one of them has a value:
+//- Set the current target to cardTwo and now we can run all our comparisons and code for keeping them flipped or un-flipping them.
+//If both already have a value (which means someone is rage clicking the cards) just return so that nothing happens until the matching code has run.
+
+//Just make sure to set the values of those two variables to null (a falsey value) after you're done with your comparison.
+
+
+  
 
 
 
