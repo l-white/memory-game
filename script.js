@@ -17,6 +17,10 @@ const COLORS = [
   "purple"
 ];
 
+function changeColor(cardToChange){
+  cardToChange.style.backgroundColor = 'white';
+}
+
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want ot research more
@@ -79,7 +83,6 @@ function handleCardClick(event) {
   flipped.push(card.classList[0]);
   console.log(flipped);
 
-  console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
   //console.log(card.style.backgroundColor);
   
   /*for (let i = 0; i < flipped.length; i++){
@@ -89,12 +92,51 @@ function handleCardClick(event) {
   }*/
   if (!cardOne || !cardTwo){
     cardOne = event.target;
-    console.log(cardOne);
+    //console.log(cardOne);
   }
   if (cardOne && !cardTwo){
     cardTwo = event.target;
-    console.log(cardTwo);
+    //console.log(cardTwo);
   }
+
+  console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
+
+  if (flipped[0] !== flipped[1] && flipped.length === 2){
+    //setTimeout(changeColor(cardOne), 3000);
+    //setTimeout(changeColor(cardTwo), 1000);
+    setTimeout(function() {
+      console.log(cardOne);
+      //console.log(cardTwo);
+      cardOne.style.backgroundColor = "white";
+      //cardTwo.style.backgroundColor = "white";
+      //card1.classList.remove("flipped");
+      //card2.classList.remove("flipped");
+      cardOne = null;
+      //cardTwo = null;
+      //noClicking = false;
+      return cardOne;
+    }, 1500);
+    setTimeout(function() {
+      console.log(cardOne);
+      //console.log(cardTwo);
+      event.target.style.backgroundColor = "white";
+      //cardTwo.style.backgroundColor = "white";
+      //card1.classList.remove("flipped");
+      //card2.classList.remove("flipped");
+      cardTwo = null;
+      //cardTwo = null;
+      //noClicking = false;
+      return event.target;
+    }, 1500);
+    flipped.pop();
+    flipped.pop();
+  }
+  
+
+  
+
+//cardOne.style.backgroundColor = 'white';
+
   //console.log(cardOne.style.backgroundColor);
   //console.log(cardTwo.style.backgroundColor);
   //console.log(cardOne.classList[0] === cardTwo.classList[0]);
