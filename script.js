@@ -92,11 +92,11 @@ function handleCardClick(event) {
   }*/
   if (!cardOne || !cardTwo){
     cardOne = event.target;
-    //console.log(cardOne);
+    console.log(cardOne);
   }
   if (cardOne && !cardTwo){
     cardTwo = event.target;
-    //console.log(cardTwo);
+    console.log(cardTwo);
   }
 
   console.log(flipped[0] === flipped[1] ? isMatch : !isMatch);
@@ -126,13 +126,23 @@ function handleCardClick(event) {
       cardTwo = null;
       //cardTwo = null;
       //noClicking = false;
+      //return cardTwo;
       return event.target;
     }, 1500);
     //flipped.pop();
-    
+    //flipped.pop();
+  //flipped.pop();
+  //console.log(flipped);
+  flipped = [];
   }
-  console.log(flipped);
   
+  if (flipped[0] === flipped[1]){
+    //cardOne.removeEventListener('click', handleCardClick);
+    //cardTwo.removeEventListener('click', handleCardClick);
+    flipped = [];
+  }
+  
+ //flipped = [];
 
   
 
@@ -225,7 +235,7 @@ if (cardOne !== null && cardTwo === null){
     //card.style.backgroundColor = 'white';
 
   //}
+  
 }
-
 // when the DOM loads
 createDivsForColors(shuffledColors);
