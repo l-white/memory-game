@@ -1,12 +1,7 @@
 const gameContainer = document.getElementById("game");
 let flipped = [];
-let isMatch = true;
-let cardOne;
-let cardTwo;
-let cardThree;
-let matchedCards = [];
-let allCards = document.querySelectorAll('div');
-console.log(allCards);
+let cardOne = null;
+let cardTwo = null;
 
 const COLORS = [
   "red",
@@ -64,13 +59,17 @@ function createDivsForColors(colorArray) {
     // call a function handleCardClick when a div is clicked on
     newDiv.addEventListener("click", handleCardClick);
 
+    // remove function handleCardClick when two two cards are showing
+    if (cardOne && cardTwo){
+      cardOne.removeEventListener("click", handleCardClick);
+      cardTwo.removeEventListener("click", handleCardClick);
+    }
+
     // append the div to the element with an id of game
     gameContainer.append(newDiv);
   }
   // remove event listener if cardOne and cardTwo exist
-  if (cardOne && cardTwo){
-    newDiv.removeEventListener("click", handleCardClick);
-  }
+  
 }
 
 // TODO: Implement this function!
@@ -78,14 +77,13 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   //let clicks = 0;
+
   let currentCard = event.target;
   flipped.push(currentCard);
   cardOne = flipped[0];
   cardTwo = flipped[1];
   console.log(flipped.length);
   console.log(event.target);
-
-  // remove event listener if two cards are flipped
 
   // show card colors
   if (cardOne) {
@@ -94,11 +92,14 @@ function handleCardClick(event) {
   if (cardTwo) {
     cardTwo.style.backgroundColor = flipped[1].classList.value;
   }
+
   // implement setTimeout to change background color to white for cards if there is no match
   if (cardOne && cardTwo && (cardOne.classList.value !== cardTwo.classList.value)){
     setTimeout(function(){
       cardOne.style.backgroundColor = 'white';
       cardTwo.style.backgroundColor = 'white';
+      cardOne = null;
+      cardTwo = null;
     }, 1000);
   }
   if (cardOne === cardTwo){
@@ -108,7 +109,7 @@ function handleCardClick(event) {
   }
 
   console.log(flipped);
-  if (flipped.length === 2){
+  if (flipped.length >= 2){
     flipped = [];
   }
   
