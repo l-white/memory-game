@@ -2,6 +2,8 @@ const gameContainer = document.getElementById("game");
 let flipped = [];
 let cardOne = null;
 let cardTwo = null;
+let lockBoard = false;
+let matches = 0;
 
 const COLORS = [
   "red",
@@ -71,13 +73,12 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   //let clicks = 0;
+  if (lockBoard) return;
 
   let currentCard = event.target;
   flipped.push(currentCard);
   cardOne = flipped[0];
   cardTwo = flipped[1];
-  console.log(flipped.length);
-  console.log(event.target);
 
   // show card colors
   if (cardOne) {
@@ -87,26 +88,19 @@ function handleCardClick(event) {
     cardTwo.style.backgroundColor = flipped[1].classList.value;
   }
 
-  // implement setTimeout to change background color to white for cards if there is no match
   if (cardOne && cardTwo && (cardOne.classList.value !== cardTwo.classList.value)){
+    lockBoard = true;
     setTimeout(function(){
       cardOne.style.backgroundColor = 'white';
       cardTwo.style.backgroundColor = 'white';
       cardOne = null;
       cardTwo = null;
+      lockBoard = false;
     }, 1000);
-  }
-  if (cardOne === cardTwo){
-    setTimeout(function(){
-      cardOne.style.backgroundColor = 'white';
-    })
-  }
-
-  console.log(flipped);
+  } 
   if (flipped.length >= 2){
     flipped = [];
   }
-  
 }
 // when the DOM loads
 createDivsForColors(shuffledColors);
