@@ -128,10 +128,12 @@ function handleCardClick(event) {
       //noClicking = false;
       return event.target;
     }, 1500);
-    //flipped.pop();
-    
+    flipped.pop();
+    flipped.pop();
   }
+  //flipped = [];
   console.log(flipped);
+  
   
 
   
@@ -226,6 +228,6 @@ if (cardOne !== null && cardTwo === null){
 
   //}
 }
-
+//flipped = [];
 // when the DOM loads
 createDivsForColors(shuffledColors);
