@@ -103,7 +103,7 @@ function handleCardClick(event) {
   if (flipped.length >= 2){
     flipped = [];
   }
-  if (matches === 5){
+  if (matches === COLORS.length/2){
     alert('game over');
   }
 }
