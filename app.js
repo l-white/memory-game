@@ -97,9 +97,14 @@ function handleCardClick(event) {
       cardTwo = null;
       lockBoard = false;
     }, 1000);
-  } 
+  } else if (cardOne && cardTwo && (cardOne.classList.value === cardTwo.classList.value)){
+    matches += 1;
+  }
   if (flipped.length >= 2){
     flipped = [];
+  }
+  if (matches === 5){
+    alert('game over');
   }
 }
 // when the DOM loads
