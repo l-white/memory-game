@@ -74,6 +74,7 @@ function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   //let clicks = 0;
   if (lockBoard) return;
+  if (event.target.classList.contains("flipped")) return;
 
   let currentCard = event.target;
   flipped.push(currentCard);
@@ -83,29 +84,39 @@ function handleCardClick(event) {
   // show card colors
   if (cardOne) {
     cardOne.style.backgroundColor = flipped[0].classList.value;
+    cardOne.classList.add("flipped");
   }
   if (cardTwo) {
     cardTwo.style.backgroundColor = flipped[1].classList.value;
+    cardTwo.classList.add("flipped");
   }
 
+  // check to see if two cards are flipped and add functionality to deal with a match or no match
   if (cardOne && cardTwo && (cardOne.classList.value !== cardTwo.classList.value)){
     lockBoard = true;
     setTimeout(function(){
       cardOne.style.backgroundColor = 'white';
       cardTwo.style.backgroundColor = 'white';
+      cardOne.classList.remove("flipped");
+      cardTwo.classList.remove("flipped");
       cardOne = null;
       cardTwo = null;
       lockBoard = false;
     }, 1000);
   } else if (cardOne && cardTwo && (cardOne.classList.value === cardTwo.classList.value)){
-    matches += 1;
+      cardOne.removeEventListener('click', handleCardClick);
+      cardTwo.removeEventListener('click', handleCardClick);
+      cardOne = null;
+      cardTwo = null;
+      matches += 1;
+      lockboard = false;
   }
   if (flipped.length >= 2){
     flipped = [];
   }
   if (matches === COLORS.length/2){
     alert('game over');
-  }
+ }
 }
 // when the DOM loads
 createDivsForColors(shuffledColors);
