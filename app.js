@@ -64,11 +64,7 @@ function createDivsForColors(colorArray) {
     // append the div to the element with an id of game
     gameContainer.append(newDiv);
   }
-  // remove event listener if cardOne and cardTwo exist
-  
 }
-
-// TODO: Implement this function!
 
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
